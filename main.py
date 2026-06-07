@@ -8,23 +8,33 @@ print("Generate secure random passwords instantly.\n")
 special_chars = "!@#$%&*"
 characters = string.ascii_letters + string.digits + special_chars
 
-password = [random.choice(string.ascii_uppercase),
-random.choice(string.ascii_lowercase),
-random.choice(string.digits),
-random.choice(special_chars)]
 
-length = int(input("Enter the length of password you need to generate:"))
+while True:
 
-if length < 4:
-    print("Password length must be atleast 4")
-else :
-  
+  length = int(input("Enter the length of password you need to generate:"))
 
-  for i in range(length-4):
-    password.append(random.choice(characters))
+  if length < 4:
+        print("Password length must be atleast 4")
+  else :
+      password = [random.choice(string.ascii_uppercase),
+                   random.choice(string.ascii_lowercase),
+                  random.choice(string.digits),
+                   random.choice(special_chars)]
 
-  random.shuffle(password)
-  password = "".join(password)
+      
+
+      for i in range(length-4):
+        password.append(random.choice(characters))
+
+      random.shuffle(password)
+      password = "".join(password)
 
 
-  print(f"Generated password :  {password}")
+      print(f"Generated password :  {password}")
+
+  play_again = input("Do you want to generate another password ? (yes/no) : ").lower()
+  if play_again == "yes" :
+      continue  
+  else :
+      print("Thank you for using the Password Generator !")
+      break   
